@@ -43,6 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command.cs" />
+    <Compile Include="CommandManager.cs" />
+    <Compile Include="Commands\HelpCommand.cs" />
+    <Compile Include="Commands\ListCommand.cs" />
+    <Compile Include="Commands\AddCommand.cs" />
+    <Compile Include="Commands\RemoveCommand.cs" />
     <Compile Include="Group.cs" />
     <Compile Include="ObjectManager.cs" />
     <Compile Include="Program.cs" />

@@ -25,13 +25,32 @@ namespace student_scrambler
             if (!File.Exists("students.txt"))
                 File.WriteAllText("students.txt", string.Empty);
 
-            Students = new List<Student>();
+            Students = FetchStudents();
             Groups = new List<Group>();
+
+            
         }
 
         public void CreateNewStudent(string Name)
         {
             Students.Add(new Student(Students.Count, Name));
+            SaveStudents();
+        }
+
+        public void DeleteStudent(int Id)
+        {
+            Student student = GetStudent(Id);
+            if(student != null)
+                Students.Remove(student);
+            SaveStudents();
+        }
+
+        public void DeleteStudent(string Name)
+        {
+            Student student = GetStudent(Name);
+            if (student != null)
+                Students.Remove(student);
+            SaveStudents();
         }
 
         public void SaveStudents()
@@ -54,6 +73,21 @@ namespace student_scrambler
             }
             return Students;
         }
+
+        public Student GetStudent(int Id)
+        {
+            foreach (Student student in Students)
+                if (student.Id == Id) return student;
+            return null;
+        }
+
+        public Student GetStudent(string Name)
+        {
+            foreach (Student student in Students)
+                if (student.Name.ToLower() == Name.ToLower()) return student;
+            return null;
+        }
+
 
     }
 }
