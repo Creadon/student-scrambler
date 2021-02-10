@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Command.cs" />
     <Compile Include="CommandManager.cs" />
+    <Compile Include="Commands\GroupCommand.cs" />
     <Compile Include="Commands\HelpCommand.cs" />
     <Compile Include="Commands\ListCommand.cs" />
     <Compile Include="Commands\AddCommand.cs" />

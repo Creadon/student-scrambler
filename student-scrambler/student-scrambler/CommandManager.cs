@@ -20,6 +20,7 @@ namespace student_scrambler
             Commands.Add(new ListCommand());
             Commands.Add(new AddCommand());
             Commands.Add(new RemoveCommand());
+            Commands.Add(new GroupCommand());
 
             Console.WriteLine("Use command 'Help' for a list of commands.");
         }

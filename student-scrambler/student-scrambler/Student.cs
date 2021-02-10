@@ -11,7 +11,7 @@ namespace student_scrambler
 
         public int Id
         {
-            get; private set;
+            get; set;
         }
 
         public string Name

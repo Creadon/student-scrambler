@@ -23,3 +23,7 @@ namespace student_scrambler
         }
     }
 }
+
+/*
+ * Linus Sjunnesson SY18
+ */

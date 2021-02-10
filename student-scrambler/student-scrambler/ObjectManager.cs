@@ -53,8 +53,19 @@ namespace student_scrambler
             SaveStudents();
         }
 
+        public void NewStudentIds()
+        {
+            int id = 0;
+            foreach (Student student in Students)
+            {
+                student.Id = id;
+                id++;
+            }
+        }
+
         public void SaveStudents()
         {
+            NewStudentIds();
             List<string> output = new List<string>();
             foreach(Student student in Students)
             {

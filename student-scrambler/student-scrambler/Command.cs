@@ -19,10 +19,16 @@ namespace student_scrambler
             get; private set;
         }
 
-        public Command(string Name, string Description)
+        public string Usage
+        {
+            get; private set;
+        }
+
+        public Command(string Name, string Description, string Usage)
         {
             this.Name = Name;
             this.Description = Description;
+            this.Usage = Usage;
         }
 
         public abstract void Run(string[] Arguments);

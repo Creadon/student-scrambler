@@ -9,7 +9,7 @@ namespace student_scrambler.Commands
     class HelpCommand : Command
     {
 
-        public HelpCommand() : base("Help", "Returns all available commands")
+        public HelpCommand() : base("Help", "Returns all available commands", "/help")
         { }
 
         public override void Run(string[] Arguments)
@@ -19,7 +19,8 @@ namespace student_scrambler.Commands
                 if (command.Name.ToLower() == "help")
                     continue;
                 Console.WriteLine(command.Name);
-                Console.WriteLine("  -  " + command.Description);
+                Console.WriteLine("  " + command.Description);
+                Console.WriteLine("  " + command.Usage + "\n");
             }
         }
     }
