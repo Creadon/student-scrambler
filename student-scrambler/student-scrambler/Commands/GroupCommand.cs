@@ -20,29 +20,64 @@ namespace student_scrambler.Commands
                 return;
             }
 
-            int groups = 0;
-            int students = Program.objectManager.Students.Count;
+            int groupAmount = 0;
+            int studentAmount = Program.objectManager.Students.Count;
             try
             {
-                groups = int.Parse(Arguments[1]);
+                groupAmount = int.Parse(Arguments[1]);
             } catch(Exception)
             {
                 Console.WriteLine("Usage: " + Usage);
                 return;
             }
 
-            Console.WriteLine("Groups: " + groups);
-            Console.WriteLine("Students: " + Program.objectManager.Students.Count);
-
-            if(groups > students)
+            if(groupAmount <= 0)
             {
-                Console.WriteLine("Cannot create that many groups, there are only " + students + " students");
+                Console.WriteLine("Invalid group amount");
                 return;
             }
 
+            if(groupAmount > studentAmount)
+            {
+                Console.WriteLine("Cannot create that many groups, there are only " + studentAmount + " students");
+                return;
+            }
 
+            Program.objectManager.Groups.Clear();
 
-            
+            int studentsPerGroup = (int)Math.Floor((double)((double)studentAmount / (double)groupAmount));
+            int studentsLeftOut = studentAmount - (studentsPerGroup * groupAmount);
+
+            List<Student> availableStudents = Program.objectManager.Students.ToList();
+            Random random = new Random();
+
+            List<Group> groups = new List<Group>();
+
+            for(int group = 0; group < groupAmount; group++)
+            {
+                List<Student> students = new List<Student>();
+
+                for (int student = 0; student < studentsPerGroup; student++)
+                {
+                    int next = random.Next(0, availableStudents.Count);
+                    students.Add(availableStudents[next]);
+                    availableStudents.RemoveAt(next);
+                }
+
+                if(studentsLeftOut > 0)
+                {
+                    studentsLeftOut--;
+                    int next = random.Next(0, availableStudents.Count);
+                    students.Add(availableStudents[next]);
+                    availableStudents.RemoveAt(next);
+                }
+                
+                groups.Add(new Group(group, students));
+            }
+
+            Program.objectManager.Groups = groups;
+
+            Console.WriteLine("Successfully created " + groupAmount + " new groups");
 
         }
 
