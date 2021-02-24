@@ -31,6 +31,9 @@ namespace student_scrambler.Commands
             }
 
             Program.objectManager.CreateNewStudent(sb.ToString().Trim());
+
+            Console.WriteLine("Successfully added " + sb.ToString().Trim());
+
         }
     }
 }

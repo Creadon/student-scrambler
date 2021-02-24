@@ -22,7 +22,8 @@ namespace student_scrambler
             Commands.Add(new RemoveCommand());
             Commands.Add(new GroupCommand());
 
-            Console.WriteLine("Use command 'Help' for a list of commands.");
+            PrintHeader();
+            Console.WriteLine("Use command 'Help' for a list of commands.\n");
         }
 
         public void RunCommand(string Input)
@@ -35,9 +36,16 @@ namespace student_scrambler
             {
                 if(command.Name.ToLower() == Arguments[0].ToLower())
                 {
+                    PrintHeader();
                     command.Run(Arguments);
+                    Console.WriteLine();
                 }
             }
+        }
+
+        public void PrintHeader()
+        {
+            Console.WriteLine("\n  https://github.com/Creadon/student-scrambler \n");
         }
 
     }

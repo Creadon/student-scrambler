@@ -23,7 +23,10 @@ namespace student_scrambler.Commands
             try
             {
                 int id = int.Parse(Arguments[1]);
+
                 Program.objectManager.DeleteStudent(id);
+
+                Console.WriteLine("Successfully removed " + id);
             } catch(Exception)
             {
                 StringBuilder sb = new StringBuilder();
@@ -34,6 +37,8 @@ namespace student_scrambler.Commands
                 }
 
                 Program.objectManager.DeleteStudent(sb.ToString().Trim());
+
+                Console.WriteLine("Successfully removed " + sb.ToString().Trim());
             }
         }
     }

@@ -15,6 +15,8 @@ namespace student_scrambler
         static void Main(string[] args)
         {
 
+            Console.Title = "student-scrambler";
+
             while(true)
             {
                 commandManager.RunCommand(Console.ReadLine());
