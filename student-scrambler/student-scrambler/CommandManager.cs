@@ -29,6 +29,7 @@ namespace student_scrambler
         public void RunCommand(string Input)
         {
             Console.Clear();
+            PrintHeader();
 
             string[] Arguments = Input.Split(' ');
 
@@ -36,11 +37,14 @@ namespace student_scrambler
             {
                 if(command.Name.ToLower() == Arguments[0].ToLower())
                 {
-                    PrintHeader();
                     command.Run(Arguments);
                     Console.WriteLine();
+                    return;
                 }
             }
+
+            Console.WriteLine("Error: Command not found");
+            Console.WriteLine("Use command 'Help' for a list of commands.\n");
         }
 
         public void PrintHeader()
